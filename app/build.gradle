@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.smashpractice"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,9 +23,13 @@ android {
 
     dependencies {
         implementation 'com.jakewharton:butterknife:6.1.0'
-        annotationProcessor 'com.jakewharton:butterknife-compiler:6.1.0'
+        annotationProcessor 'com.jakewharton:butterknife:6.1.0'
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 
 }
 

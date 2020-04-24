@@ -16,21 +16,12 @@ import butterknife.InjectView;
 
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.loginB)
-    Button loginButton;
+    @InjectView(R.id.loginB) Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize stitch client
-        final StitchAppClient client = Stitch.initializeDefaultAppClient("smashpractice-jxlen");
-
-        final RemoteMongoClient mongoClient = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
