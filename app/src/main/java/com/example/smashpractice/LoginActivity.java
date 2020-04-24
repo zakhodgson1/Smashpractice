@@ -29,6 +29,7 @@ import org.bson.Document;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import static com.example.smashpractice.DatabaseHelper.mongoClient;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     @InjectView(R.id.pwInput) EditText passwordInput;
     @InjectView(R.id.loginButton) Button loginButton;
     @InjectView(R.id.signupLink) TextView signupLink;
-    @InjectView(R.id.pwLink) TextView pwLink;
+    @InjectView(R.id.pwLink) TextView passwordLink;
 
     boolean loginAttempted;
 
@@ -50,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        pwLink.setVisibility(View.INVISIBLE);
+        ButterKnife.inject(this);
+        passwordLink.setVisibility(View.INVISIBLE);
         loginAttempted = false;
 
         signupLink.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,12 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+    }
+
+    // disable going back to the MainActivity
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     public void login() {
@@ -140,8 +148,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if(loginAttempted == false) {
 
-            pwLink.setVisibility(View.VISIBLE);
-            pwLink.setOnClickListener(new View.OnClickListener() {
+            passwordLink.setVisibility(View.VISIBLE);
+            passwordLink.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     recoverPassword();

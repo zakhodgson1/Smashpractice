@@ -11,26 +11,21 @@ import com.mongodb.stitch.android.core.Stitch;
 import com.mongodb.stitch.android.core.StitchAppClient;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class MainActivity extends AppCompatActivity {
-
-    @InjectView(R.id.loginB) Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        // Initialize stitch client
+        final StitchAppClient client =
+                Stitch.initializeDefaultAppClient("smashpractice-jxlen");
 
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        final RemoteMongoClient mongoClient =
+                client.getServiceClient(RemoteMongoClient.factory, "SmashPractice");
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

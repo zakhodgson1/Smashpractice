@@ -18,6 +18,7 @@ import com.mongodb.lang.NonNull;
 import com.mongodb.stitch.android.core.Stitch;
 import com.mongodb.stitch.android.core.auth.providers.userpassword.UserPasswordAuthProviderClient;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SignupActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        ButterKnife.inject(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -84,6 +86,7 @@ public class SignupActivity extends AppCompatActivity {
                                            public void onComplete(@NonNull final Task<Void> task) {
                                                if (task.isSuccessful()) {
                                                    Log.i("stitch", "Successfully sent account confirmation email");
+                                                   Toast.makeText(SignupActivity.this, "Email confirmation mail sent.", Toast.LENGTH_SHORT).show();
                                                    progressDialog.dismiss();
                                                    onSignupSuccess(gamerTag, email, password);
 
