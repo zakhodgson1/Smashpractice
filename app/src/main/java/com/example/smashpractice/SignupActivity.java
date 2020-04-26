@@ -134,8 +134,18 @@ public class SignupActivity extends AppCompatActivity {
 
         signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
-        openLoginActivity();
+        openSurveyActivity();
+        sendData(username, email, password);
         finish();
+    }
+
+    public void sendData(String name, String email, String password)
+    {
+        Intent intent = new Intent(getApplicationContext(), SurveyActivity.class);
+        intent.putExtra("username", name);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
     }
 
     public void onSignupFailed() {
@@ -143,8 +153,8 @@ public class SignupActivity extends AppCompatActivity {
         signupButton.setEnabled(true);
     }
 
-    public void openLoginActivity(){
-        Intent intent = new Intent(this, LoginActivity.class);
+    public void openSurveyActivity(){
+        Intent intent = new Intent(this, SurveyActivity.class);
         startActivity(intent);
     }
 }
