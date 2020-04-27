@@ -9,6 +9,7 @@ public class UserInfo extends Application {
     private String email;
     private String userName;
     private String userID;
+    private String userPath;
 
     public String getUserName() {
         return userName;
@@ -32,6 +33,14 @@ public class UserInfo extends Application {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getUserPath() {
+        return userPath;
+    }
+
+    public void setUserPath(String userPath) {
+        this.userPath = userPath;
     }
 
     public void clear(){
