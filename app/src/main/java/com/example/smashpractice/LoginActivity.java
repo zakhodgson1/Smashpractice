@@ -35,6 +35,7 @@ import butterknife.InjectView;
 import static com.example.smashpractice.DatabaseHelper.mongoClient;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "LoginActivity";
 
     @InjectView(R.id.emailInput) EditText emailInput;
     @InjectView(R.id.pwInput) EditText passwordInput;
@@ -137,7 +138,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setEnabled(true);
         openProfileActivity();
         sendData(email);
-        //openViewHabitActivity(); - where we are supposed to go
         finish();
     }
 
