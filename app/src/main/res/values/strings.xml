@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SmashPractice</string>
 
-    <string-array name = "charNames">
+    <string-array name="charNames">
         <item>Mario</item>
         <item>Donkey Kong</item>
         <item>Link</item>

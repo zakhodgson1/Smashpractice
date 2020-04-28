@@ -1,19 +1,8 @@
 package com.example.smashpractice;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,14 +12,9 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
 import com.mongodb.client.model.Filters;
-import com.mongodb.stitch.android.core.Stitch;
-import com.mongodb.stitch.android.core.StitchAppClient;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteFindIterable;
-import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoCollection;
-import com.mongodb.stitch.core.services.mongodb.remote.RemoteUpdateResult;
 
 import org.bson.Document;
 import org.json.JSONException;
@@ -44,12 +28,14 @@ public class ProfileActivity extends AppCompatActivity {
     String gamerTag;
     String main;
 
+
     TextView header;
     TextView emailText;
     ImageView profilePicture;
-    Button pictureB;
+    Button mainB;
     Button logoutB;
     Button statsB;
+    Button refreshB;
 
 
     @Override
@@ -59,13 +45,31 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         header = findViewById(R.id.header);
-        header.setText("");
         emailText = findViewById(R.id.emailText);
         profilePicture = findViewById(R.id.profilePic);
-        pictureB = findViewById(R.id.pictureB);
+        mainB = findViewById(R.id.mainB);
         logoutB = findViewById(R.id.logoutB);
         statsB = findViewById(R.id.statsB);
+        refreshB = findViewById(R.id.refreshB);
 
+        UserInfo user = (UserInfo) getApplication();
+        email = user.getEmail();
+        emailText.setText(email);
+        getData();
+
+        refreshB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refresh();
+            }
+        });
+
+        mainB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ChangeMainActivity.class));
+            }
+        });
 
 
         logoutB.setOnClickListener(new View.OnClickListener() {
@@ -77,20 +81,21 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        UserInfo user = (UserInfo) getApplication();
-        email = user.getEmail();
-        emailText.setText(email);
-        while(header.getText() == "")
-        {
-            getData();
-        }
-
     }
 
-    public void sendData(String username)
+    public void refresh() {
+        while(header.getText() == "")
+        {
+            header.setText(gamerTag);
+        }
+    }
+
+
+    public void sendData(String gamerTAG, String userMain)
     {
         UserInfo user = (UserInfo) getApplication();
-        user.setUserName(username);
+        user.setUserName(gamerTAG);
+        user.setMain(userMain);
     }
 
     public void getData() {
@@ -105,8 +110,9 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 JSONObject obj = new JSONObject(item.toJson());
                 gamerTag = obj.getString("GamerTag");
-                header.setText(gamerTag + "'s Profile");
-                sendData(gamerTag);
+                main = obj.getString("Main");
+                header.setText(gamerTag);
+                sendData(gamerTag, main);
             } catch (JSONException e) {
                 Log.d("JSON exception:", e.toString());
             }
