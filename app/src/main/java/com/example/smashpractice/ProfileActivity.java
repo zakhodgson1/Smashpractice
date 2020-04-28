@@ -89,6 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
         {
             header.setText(tag + "'s Profile");
         }
+        setPicture(main);
     }
 
     public void sendTag(String gtag) {
@@ -133,8 +134,23 @@ public class ProfileActivity extends AppCompatActivity {
     {
         switch(userMain)
         {
-           case "palutena" :
+               case "Joker" :
+               profilePicture.setImageResource(R.drawable.joker);
+               break;
+
+               case "Wolf" :
+               profilePicture.setImageResource(R.drawable.wolf);
+               break;
+
+               case "Ness" :
+               profilePicture.setImageResource(R.drawable.ness);
+               break;
+
+               case "Palutena" :
                profilePicture.setImageResource(R.drawable.palutena);
+               break;
+
+
         }
     }
 
