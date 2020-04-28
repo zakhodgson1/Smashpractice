@@ -29,7 +29,6 @@ public class ProfileActivity extends AppCompatActivity {
     String main;
     String tag;
 
-
     TextView header;
     TextView emailText;
     ImageView profilePicture;
@@ -104,8 +103,7 @@ public class ProfileActivity extends AppCompatActivity {
         Log.d("debug", umain);
         UserInfo user = (UserInfo) getApplication();
         user.setMain(umain);
-        String lowermain = umain.toLowerCase();
-        setPicture(lowermain);
+        setPicture(umain);
     }
 
     public void getTag() {
@@ -131,7 +129,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-
     public void setPicture(String userMain)
     {
         switch(userMain)
@@ -139,11 +136,7 @@ public class ProfileActivity extends AppCompatActivity {
            case "palutena" :
                profilePicture.setImageResource(R.drawable.palutena);
         }
-
     }
-
-
-
 
 
 }
