@@ -2,6 +2,7 @@ package com.example.smashpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -25,8 +26,8 @@ import static com.example.smashpractice.DatabaseHelper.mongoClient;
 public class ProfileActivity extends AppCompatActivity {
 
     String email;
-    String gamerTag;
     String main;
+    String tag;
 
 
     TextView header;
@@ -54,8 +55,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         UserInfo user = (UserInfo) getApplication();
         email = user.getEmail();
+        getTag();
         emailText.setText(email);
-        getData();
+
 
         refreshB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,38 +88,62 @@ public class ProfileActivity extends AppCompatActivity {
     public void refresh() {
         while(header.getText() == "")
         {
-            header.setText(gamerTag);
+            header.setText(tag + "'s Profile");
         }
     }
 
-
-    public void sendData(String gamerTAG, String userMain)
-    {
+    public void sendTag(String gtag) {
+        tag = gtag;
+        Log.d("debug", gtag);
         UserInfo user = (UserInfo) getApplication();
-        user.setUserName(gamerTAG);
-        user.setMain(userMain);
+        user.setUserName(gtag);
     }
 
-    public void getData() {
-        RemoteFindIterable<Document> results;
-        // Connect to MongoDB Client
-        final RemoteMongoCollection<Document> coll =
-                mongoClient.getDatabase("UserData").getCollection("Users");
-        results = coll.find(Filters.eq("Email", email))
-                .projection(
-                        new Document());
-        results.forEach(item -> {
-            try {
-                JSONObject obj = new JSONObject(item.toJson());
-                gamerTag = obj.getString("GamerTag");
-                main = obj.getString("Main");
-                header.setText(gamerTag);
-                sendData(gamerTag, main);
-            } catch (JSONException e) {
-                Log.d("JSON exception:", e.toString());
-            }
-        });
+    public void sendMain(String umain) {
+        main = umain;
+        Log.d("debug", umain);
+        UserInfo user = (UserInfo) getApplication();
+        user.setMain(umain);
+        String lowermain = umain.toLowerCase();
+        setPicture(lowermain);
     }
+
+    public void getTag() {
+    RemoteFindIterable<Document> results;
+    // Connect to MongoDB Client
+    final RemoteMongoCollection<Document> coll =
+            mongoClient.getDatabase("UserData").getCollection("Users");
+    results = coll.find(Filters.eq("Email", email))
+            .projection(
+        new Document());
+    results.forEach(item -> {
+        try {
+            JSONObject obj = new JSONObject(item.toJson());
+            String utag = obj.getString("GamerTag");
+            sendTag(utag);
+            String umain = obj.getString("Main");
+            sendMain(umain);
+        } catch (JSONException e) {
+            Log.d("JSON exception:", e.toString());
+        }
+    });
+}
+
+
+
+
+    public void setPicture(String userMain)
+    {
+        switch(userMain)
+        {
+           case "palutena" :
+               profilePicture.setImageResource(R.drawable.palutena);
+        }
+
+    }
+
+
+
 
 
 }

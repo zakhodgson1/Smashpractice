@@ -113,7 +113,6 @@ public class LoginActivity extends AppCompatActivity {
                                     UserInfo user = (UserInfo) getApplication();
                                     userID =  obj.getJSONObject("_id").getString("$oid");
                                     user.setUserID(userID);
-                                    Log.d("*******",userID);
                                 } catch (JSONException e) {
                                     Log.d("JSON exception:", e.toString());
                                 }
@@ -130,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
 
 
