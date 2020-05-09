@@ -144,6 +144,10 @@ public class CompareResultActivity extends AppCompatActivity {
                 profilePicture.setImageResource(R.drawable.doc);
                 break;
 
+            case "Donkey Kong":
+                profilePicture.setImageResource(R.drawable.dk);
+                break;
+
             case "Duck Hunt":
                 profilePicture.setImageResource(R.drawable.duckhunt);
                 break;
