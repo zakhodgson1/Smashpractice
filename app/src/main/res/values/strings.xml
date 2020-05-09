@@ -83,4 +83,21 @@
         <item>Terry</item>
         <item>Byleth</item>
     </string-array>
+
+    <string-array name="comparables">
+        <item>Air Acceleration</item>
+        <item>Air Speed</item>
+        <item>Regular Fall Speed</item>
+        <item>Fast Fall Speed</item>
+        <item>Gravity</item>
+        <item>SH Height</item>
+        <item>FH Height</item>
+        <item>SH Duration</item>
+        <item>FH Duration</item>
+        <item>Weight</item>
+        <item>Walk Speed</item>
+        <item>Initial Dash</item>
+        <item>Run Speed</item>
+    </string-array>
+
 </resources>
