@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CompareResultActivity"></activity>
+        <activity android:name=".WatchActivity"></activity>
+        <activity android:name=".CompareResultActivity" />
         <activity android:name=".CompareActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".ChangeMainActivity" />
