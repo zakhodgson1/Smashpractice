@@ -101,4 +101,5 @@ public class RecordOneActivity extends AppCompatActivity {
         intent.putExtra("Email", email);
         startActivity(intent);
     }
+
 }

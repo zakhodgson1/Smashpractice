@@ -3,6 +3,7 @@ package com.example.smashpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     String charFought;
     String email;
     String TAG;
+    String noteText;
 
     int result;
 
@@ -66,6 +68,8 @@ public class RecordTwoActivity extends AppCompatActivity {
         loseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                winButton.setBackgroundColor(Color.GRAY);
+                loseButton.setBackgroundColor(Color.RED);
                 result = 1;
             }
         });
@@ -73,6 +77,8 @@ public class RecordTwoActivity extends AppCompatActivity {
         winButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loseButton.setBackgroundColor(Color.GRAY);
+                winButton.setBackgroundColor(Color.RED);
                 result = 2;
             }
         });
@@ -131,20 +137,21 @@ public class RecordTwoActivity extends AppCompatActivity {
 
     public void logGame() {
         Log.d(TAG, "in the log method");
-        if(!validate()) {
-            Toast.makeText(getBaseContext(), "You must select a result", Toast.LENGTH_SHORT).show();
+        boolean validated = validate();
+        if(validated == false) {
             return;
         }
         charFought = selectedSpinner.getSelectedItem().toString();
-        // Connect to MongoDB Client
+        noteText = note.getText().toString();
         final RemoteMongoCollection<Document> coll =
                 mongoClient.getDatabase("UserData").getCollection("Notes");
 
+        Log.d(TAG, charInUse + " " + charFought + " " + result + " " + noteText + " " + email);
         Document doc = new Document()
                 .append("Char_used", charInUse)
                 .append("Char_fought", charFought)
                 .append("Result", result)
-                .append("Note", note.getText())
+                .append("Note", noteText)
                 .append("User_email", email);
         final Task<RemoteInsertOneResult> insert = coll.insertOne(doc);
         insert.addOnCompleteListener(new OnCompleteListener<RemoteInsertOneResult>() {
@@ -156,6 +163,7 @@ public class RecordTwoActivity extends AppCompatActivity {
                     clearData();
                 } else {
                     Log.e("app", "Failed to insert Document", task.getException());
+                    clearData();
                 }
             }
         });
@@ -171,6 +179,8 @@ public class RecordTwoActivity extends AppCompatActivity {
 
 
     public void clearData() {
+        winButton.setBackgroundColor(Color.GRAY);
+        loseButton.setBackgroundColor(Color.GRAY);
         result = 0;
         note.setText("");
     }
