@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YTPlayerActivity"></activity>
+        <activity android:name=".RecordTwoActivity"></activity>
+        <activity android:name=".RecordOneActivity" />
+        <activity android:name=".YTPlayerActivity" />
         <activity android:name=".WatchActivity" />
         <activity android:name=".CompareResultActivity" />
         <activity android:name=".CompareActivity" />
@@ -28,6 +30,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

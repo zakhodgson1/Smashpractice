@@ -75,7 +75,7 @@ public class WatchActivity extends AppCompatActivity {
                     case R.id.record_nav:
                         //finish();
                         startActivity(new Intent(getApplicationContext()
-                                , PlayActivity.class));
+                                , RecordOneActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 

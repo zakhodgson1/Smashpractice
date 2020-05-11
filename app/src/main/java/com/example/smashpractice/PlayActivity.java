@@ -83,7 +83,7 @@ public class PlayActivity extends AppCompatActivity {
 
 
     public void openRecordActivity() {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, RecordOneActivity.class);
         startActivity(intent);
     }
 
