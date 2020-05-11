@@ -88,7 +88,6 @@ public class SurveyActivity extends AppCompatActivity {
     }
 
     public void insertUser(String g_tag, String e_mail, String pw, String main) {
-
         try {
             pw = encrypt(pw);
         } catch (Exception e) {

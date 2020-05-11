@@ -4,14 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mongodb.client.model.Filters;
+import com.mongodb.stitch.android.services.mongodb.remote.RemoteFindIterable;
+import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoCollection;
+import com.mongodb.stitch.core.services.mongodb.remote.RemoteInsertOneResult;
+
+import org.bson.Document;
+
+import static com.example.smashpractice.DatabaseHelper.mongoClient;
 
 public class RecordTwoActivity extends AppCompatActivity {
 
@@ -22,11 +34,22 @@ public class RecordTwoActivity extends AppCompatActivity {
     Button switchButton;
     EditText note;
     String charInUse;
+    String charFought;
+    String email;
+    String TAG;
+
+    int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recordtwo);
+
+        TAG = "RecordTwo";
+        Intent data = getIntent();
+        charInUse = data.getStringExtra("Character");
+        email = data.getStringExtra("Email");
+        result = 0;
 
         selectedSpinner = findViewById(R.id.selectedSpinner);
         winButton = findViewById(R.id.winButton);
@@ -39,6 +62,27 @@ public class RecordTwoActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.charNames));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectedSpinner.setAdapter(myAdapter);
+
+        loseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                result = 1;
+            }
+        });
+
+        winButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                result = 2;
+            }
+        });
+
+        logButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logGame();
+            }
+        });
 
         switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,4 +128,52 @@ public class RecordTwoActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void logGame() {
+        Log.d(TAG, "in the log method");
+        if(!validate()) {
+            Toast.makeText(getBaseContext(), "You must select a result", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        charFought = selectedSpinner.getSelectedItem().toString();
+        // Connect to MongoDB Client
+        final RemoteMongoCollection<Document> coll =
+                mongoClient.getDatabase("UserData").getCollection("Notes");
+
+        Document doc = new Document()
+                .append("Char_used", charInUse)
+                .append("Char_fought", charFought)
+                .append("Result", result)
+                .append("Note", note.getText())
+                .append("User_email", email);
+        final Task<RemoteInsertOneResult> insert = coll.insertOne(doc);
+        insert.addOnCompleteListener(new OnCompleteListener<RemoteInsertOneResult>() {
+            @Override
+            public void onComplete(@androidx.annotation.NonNull Task<RemoteInsertOneResult> task) {
+                if (task.isSuccessful()) {
+                    Log.i("STITCH", String.format("success inserting: %s",
+                            task.getResult().getInsertedId()));
+                    clearData();
+                } else {
+                    Log.e("app", "Failed to insert Document", task.getException());
+                }
+            }
+        });
+    }
+
+    public Boolean validate() {
+        if(result == 0) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
+    public void clearData() {
+        result = 0;
+        note.setText("");
+    }
+
+
 }
