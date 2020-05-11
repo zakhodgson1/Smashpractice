@@ -16,7 +16,6 @@ public class YoutubeAPI {
     public static final String mx = "&maxResults=10";
     public static final String ord = "&order=date";
     public static final String part = "&part=snippet";
-
     public static final String query = "&q=";
     public static final String type = "&type=video";
 

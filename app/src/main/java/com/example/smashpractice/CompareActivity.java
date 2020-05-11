@@ -71,7 +71,7 @@ public class CompareActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.compare_nav:
 //                        startActivity(new Intent(getApplicationContext()
-//                                ,CalendarActivity.class));
+//                                ,CompareActivity.class));
 //                        overridePendingTransition(0,0);
                         return true;
 
@@ -92,7 +92,7 @@ public class CompareActivity extends AppCompatActivity {
                     case R.id.watch_nav:
                         //finish();
                         startActivity(new Intent(getApplicationContext()
-                                , PlayActivity.class));
+                                , WatchActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }

@@ -1,6 +1,7 @@
 package com.example.smashpractice.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smashpractice.R;
+import com.example.smashpractice.YTPlayerActivity;
 import com.example.smashpractice.models.VideoYT;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -51,7 +53,10 @@ public class AdapterHome extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, getTitle, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, YTPlayerActivity.class);
+                    intent.putExtra("video_id", data.getId().getVideoId());
+                    intent.putExtra("video_title", getTitle);
+                    context.startActivity(intent);
                 }
             });
 

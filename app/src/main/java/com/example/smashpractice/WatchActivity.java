@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.example.smashpractice.adapter.AdapterHome;
 import com.example.smashpractice.models.ModelHome;
 import com.example.smashpractice.models.VideoYT;
 import com.example.smashpractice.network.YoutubeAPI;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +51,51 @@ public class WatchActivity extends AppCompatActivity {
         btn_search = findViewById(R.id.search_button);
         rv = findViewById(R.id.recycler_search);
 
-        adapter = new AdapterHome(getBaseContext(), videoList);
+        adapter = new AdapterHome(WatchActivity.this, videoList);
         manager = new LinearLayoutManager(getBaseContext());
         rv.setAdapter(adapter);
         rv.setLayoutManager(manager);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set home selected
+        bottomNavigationView.setSelectedItemId(R.id.watch_nav);
+
+        //Perform ItemSelectedList
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@androidx.annotation.NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.compare_nav:
+                        startActivity(new Intent(getApplicationContext()
+                                ,CompareActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.record_nav:
+                        //finish();
+                        startActivity(new Intent(getApplicationContext()
+                                , PlayActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.play_nav:
+                        // finish();
+                        startActivity(new Intent(getApplicationContext()
+                                , PlayActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.watch_nav:
+                        //finish();
+//                        startActivity(new Intent(getApplicationContext()
+//                                , WatchActivity.class));
+ //                       overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
