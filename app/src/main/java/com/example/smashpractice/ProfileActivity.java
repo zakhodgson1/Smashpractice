@@ -2,7 +2,6 @@ package com.example.smashpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mongodb.client.model.Filters;
@@ -37,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView profilePicture;
     Button mainB;
     Button logoutB;
-    Button statsB;
+    Button notesB;
     Button refreshB;
 
 
@@ -52,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilePicture = findViewById(R.id.profilePic);
         mainB = findViewById(R.id.mainB);
         logoutB = findViewById(R.id.logoutB);
-        statsB = findViewById(R.id.statsB);
+        notesB = findViewById(R.id.notesB);
         refreshB = findViewById(R.id.refreshB);
 
         UserInfo user = (UserInfo) getApplication();
@@ -106,6 +104,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        notesB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UserNotesActivity.class));
+            }
+        });
 
         logoutB.setOnClickListener(new View.OnClickListener() {
             @Override

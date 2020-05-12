@@ -77,11 +77,11 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
-            android:id="@+id/statsB"
+            android:id="@+id/notesB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:text="View your Stats"
+            android:text="View your Notes"
             android:textColor="#000000
 " />
 

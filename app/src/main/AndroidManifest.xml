@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecordTwoActivity"></activity>
+        <activity android:name=".UserNotesActivity"></activity>
+        <activity android:name=".RecordTwoActivity" />
         <activity android:name=".RecordOneActivity" />
         <activity android:name=".YTPlayerActivity" />
         <activity android:name=".WatchActivity" />
