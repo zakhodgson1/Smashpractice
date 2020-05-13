@@ -34,11 +34,11 @@
         android:id="@+id/backToProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="28dp"
         android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addNoteText" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/clearNotes"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/clearNotes"
@@ -53,33 +53,35 @@
 
     <EditText
         android:id="@+id/addNoteText"
-        android:layout_width="0dp"
+        android:layout_width="323dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Write a General Note..."
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/backToProfile"
         app:layout_constraintEnd_toStartOf="@+id/addNoteButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:text="Add a Note"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addNoteText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myNotes" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myNotes"
-        android:layout_width="411dp"
-        android:layout_height="506dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />

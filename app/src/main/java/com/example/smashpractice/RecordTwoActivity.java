@@ -39,8 +39,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     String email;
     String TAG;
     String noteText;
-
-    int result;
+    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class RecordTwoActivity extends AppCompatActivity {
         Intent data = getIntent();
         charInUse = data.getStringExtra("Character");
         email = data.getStringExtra("Email");
-        result = 0;
+        result = "NA";
 
         selectedSpinner = findViewById(R.id.selectedSpinner);
         winButton = findViewById(R.id.winButton);
@@ -70,7 +69,7 @@ public class RecordTwoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 winButton.setBackgroundColor(Color.GRAY);
                 loseButton.setBackgroundColor(Color.RED);
-                result = 1;
+                result = "Lose";
             }
         });
 
@@ -79,7 +78,7 @@ public class RecordTwoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loseButton.setBackgroundColor(Color.GRAY);
                 winButton.setBackgroundColor(Color.RED);
-                result = 2;
+                result = "Win";
             }
         });
 
@@ -139,6 +138,7 @@ public class RecordTwoActivity extends AppCompatActivity {
         Log.d(TAG, "in the log method");
         boolean validated = validate();
         if(validated == false) {
+            Toast.makeText(this.getBaseContext(),"Choose a Result!", Toast.LENGTH_LONG).show();
             return;
         }
         charFought = selectedSpinner.getSelectedItem().toString();
@@ -170,7 +170,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     }
 
     public Boolean validate() {
-        if(result == 0) {
+        if(result == "NA") {
             return false;
         }else {
             return true;
@@ -181,7 +181,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     public void clearData() {
         winButton.setBackgroundColor(Color.GRAY);
         loseButton.setBackgroundColor(Color.GRAY);
-        result = 0;
+        result = "NA";
         note.setText("");
     }
 

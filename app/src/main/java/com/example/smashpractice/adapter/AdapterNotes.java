@@ -24,17 +24,62 @@ import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class AdapterNotes extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.NoteHolder> {
 
     private Context context;
-    private ArrayList<String> noteList;
+    private List<String> noteList;
+    private int count = 0;
 
-    public AdapterNotes(Context context, ArrayList<String> noteList) {
+    public AdapterNotes(Context context, List<String> noteList) {
         this.context = context;
         this.noteList = noteList;
     }
 
-    class NoteHolder extends RecyclerView.ViewHolder {
+
+    @NonNull
+    @Override
+    public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.row_note, parent, false);
+        NoteHolder noteHolder = new NoteHolder(view);
+        return noteHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
+        if(noteList.get(count) != null) {
+            String used = noteList.get(count);
+            holder.c_u.append(" " + used);
+            count++;
+            String fought = noteList.get(count);
+            holder.o_u.append(" " + fought);
+            count++;
+            String result = noteList.get(count);
+            if(result == "Win") {
+                holder.picture.setImageResource(R.drawable.win);
+                count++;
+            } else if(result == "Lose") {
+                holder.picture.setImageResource(R.drawable.lose);
+                count++;
+            }
+            String text = noteList.get(count);
+            holder.noteText.setText(text);
+            int newCount = count + 1;
+            if(noteList.get(newCount) != null) {
+                count++;
+            } else {
+                return;
+            }
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return noteList.size();
+    }
+
+
+    public static class NoteHolder extends RecyclerView.ViewHolder {
 
         ImageView picture;
         TextView c_u, o_u, noteText;
@@ -47,58 +92,6 @@ public class AdapterNotes extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             noteText = itemView.findViewById(R.id.noteTextList);
         }
 
-        public void setData(ArrayList<String> data) {
-
-            data = new ArrayList<String>();
-
-            String getUsed = data.get(0);
-            String getFought = data.get(1);
-            String getResult = data.get(2);
-            String getText = data.get(3);
-
-            c_u.setText("You used: " + getUsed);
-            o_u.setText("Opponent used: " + getFought);
-            noteText.setText(getText);
-
-            if (getResult == "Win") {
-
-                Picasso.get()
-                        .load(R.drawable.winPic)
-                        .placeholder(R.mipmap.ic_launcher)
-                        .fit()
-                        .centerCrop()
-                        .into(picture, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                Log.d(TAG, "Pic onSuccess method");
-                            }
-
-                            @Override
-                            public void onError(Exception e) {
-                                Log.e(TAG, "Pic error: " + e);
-                            }
-                        });
-            } else if (getResult == "Lose") {
-
-                Picasso.get()
-                        .load(R.drawable.losePic)
-                        .placeholder(R.mipmap.ic_launcher)
-                        .fit()
-                        .centerCrop()
-                        .into(picture, new Callback() {
-                            @Override
-                            public void onSuccess() {
-                                Log.d(TAG, "Pic onSuccess method");
-                            }
-
-                            @Override
-                            public void onError(Exception e) {
-                                Log.e(TAG, "Pic error: " + e);
-                            }
-                        });
-            }
-
-        }
 
     }
 }
