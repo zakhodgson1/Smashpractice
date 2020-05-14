@@ -7,18 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.smashpractice.adapter.AdapterNotes;
 import com.example.smashpractice.models.Note;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.mongodb.Block;
+import com.mongodb.lang.NonNull;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteFindIterable;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoCollection;
+import com.mongodb.stitch.core.services.mongodb.remote.RemoteDeleteResult;
+import com.mongodb.stitch.core.services.mongodb.remote.RemoteInsertOneResult;
 
 import org.bson.Document;
 
@@ -84,6 +91,22 @@ public class UserNotesActivity extends AppCompatActivity {
             }
         });
 
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearNotes();
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNote();
+            }
+        });
+
+
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,10 +123,10 @@ public class UserNotesActivity extends AppCompatActivity {
         final RemoteMongoCollection<Document> collection =
                 mongoClient.getDatabase("UserData").getCollection("Notes");
 
-        // Only get journal entries from current user who is logged in
+
         Document filterDoc = new Document()
                 .append("User_email", email);
-        // Get all entries with the criteria from filterDoc
+
         RemoteFindIterable results = collection.find(filterDoc);
 
 
@@ -128,5 +151,58 @@ public class UserNotesActivity extends AppCompatActivity {
         Log.d("Notes", "");
         pulledNotes = true;
         return notesList;
+    }
+
+    public void clearNotes() {
+        final RemoteMongoCollection<Document> collection =
+                mongoClient.getDatabase("UserData").getCollection("Notes");
+
+        // Only get journal entries from current user who is logged in
+        Document filterDoc = new Document()
+                .append("User_email", email);
+
+        final Task <RemoteDeleteResult> deleteTask = collection.deleteMany(filterDoc);
+        deleteTask.addOnCompleteListener(new OnCompleteListener <RemoteDeleteResult> () {
+            @Override
+            public void onComplete(@NonNull Task <RemoteDeleteResult> task) {
+                if (task.isSuccessful()) {
+                    long numDeleted = task.getResult().getDeletedCount();
+                    Log.d("Notes", String.format("successfully deleted %d documents", numDeleted));
+                } else {
+                    Log.e("Notes", "failed to delete document with: ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void addNote() {
+        if(TextUtils.isEmpty(newNoteText.getText().toString())) {
+            Toast.makeText(getBaseContext(), "You need to enter some text!", Toast.LENGTH_SHORT).show();
+        } else {
+
+            String text = newNoteText.getText().toString();
+            final RemoteMongoCollection<Document> coll =
+                    mongoClient.getDatabase("UserData").getCollection("Notes");
+
+            Document doc = new Document()
+                    .append("Char_used", "NA")
+                    .append("Char_fought", "NA")
+                    .append("Result", "NA")
+                    .append("Note", text)
+                    .append("User_email", email);
+            final Task<RemoteInsertOneResult> insert = coll.insertOne(doc);
+            insert.addOnCompleteListener(new OnCompleteListener<RemoteInsertOneResult>() {
+                @Override
+                public void onComplete(@androidx.annotation.NonNull Task<RemoteInsertOneResult> task) {
+                    if (task.isSuccessful()) {
+                        Log.i("STITCH", String.format("success inserting: %s",
+                                task.getResult().getInsertedId()));
+                    } else {
+                        Log.e("app", "Failed to insert Document", task.getException());
+                    }
+                }
+            });
+        }
+        newNoteText.setText("");
     }
 }

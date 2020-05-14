@@ -38,6 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button notesB;
     Button refreshB;
 
+    UserInfo user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,13 @@ public class ProfileActivity extends AppCompatActivity {
         notesB = findViewById(R.id.notesB);
         refreshB = findViewById(R.id.refreshB);
 
-        UserInfo user = (UserInfo) getApplication();
+        user = (UserInfo) getApplication();
         email = user.getEmail();
         getTag();
         emailText.setText(email);
+        tag = user.getUserName();
+        header.setText(tag + "'s Profile");
+
 
         //Initalize and Assign Value
         BottomNavigationView bottomNavigationView2 = findViewById(R.id.bottom_navigation2);
@@ -123,11 +128,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void refresh() {
-        while(header.getText() == "")
-        {
-            header.setText(tag + "'s Profile");
-        }
-        setPicture(main);
+        tag = user.getUserName();
+        header.setText(tag + "'s Profile");
     }
 
     public void sendTag(String gtag) {

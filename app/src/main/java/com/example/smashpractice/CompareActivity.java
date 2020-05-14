@@ -4,17 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mongodb.client.model.Filters;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteFindIterable;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoCollection;
+import com.mongodb.stitch.core.services.mongodb.remote.RemoteInsertOneResult;
 
 import org.bson.Document;
 import org.json.JSONException;
@@ -28,10 +34,14 @@ public class CompareActivity extends AppCompatActivity {
     Spinner twoSpin;
     Spinner compSpin;
     Button compButton;
+    Button addNoteButton;
+    EditText newNoteText;
 
     String charOne;
     String charTwo;
     String comparable;
+    String email;
+    UserInfo user;
 
     double oneData;
     double twoData;
@@ -41,10 +51,15 @@ public class CompareActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
 
+        user = (UserInfo) getApplication();
+        email = user.getEmail();
+
         oneSpin = findViewById(R.id.charOne);
         twoSpin = findViewById(R.id.charTwo);
         compSpin = findViewById(R.id.compareSpin);
         compButton = findViewById(R.id.compareB);
+        addNoteButton = findViewById(R.id.addNoteButton);
+        newNoteText = findViewById(R.id.newNoteText);
 
         oneData = 0;
         twoData = 0;
@@ -97,6 +112,13 @@ public class CompareActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        addNoteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                addNote();
             }
         });
 
@@ -164,6 +186,36 @@ public class CompareActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    public void addNote() {
+        if(TextUtils.isEmpty(newNoteText.getText().toString())) {
+            Toast.makeText(getBaseContext(), "You need to enter some text!", Toast.LENGTH_SHORT).show();
+        } else {
+            String text = newNoteText.getText().toString();
+            final RemoteMongoCollection<Document> coll =
+                    mongoClient.getDatabase("UserData").getCollection("Notes");
+
+            Document doc = new Document()
+                    .append("Char_used", "NA")
+                    .append("Char_fought", "NA")
+                    .append("Result", "NA")
+                    .append("Note", text)
+                    .append("User_email", email);
+            final Task<RemoteInsertOneResult> insert = coll.insertOne(doc);
+            insert.addOnCompleteListener(new OnCompleteListener<RemoteInsertOneResult>() {
+                @Override
+                public void onComplete(@androidx.annotation.NonNull Task<RemoteInsertOneResult> task) {
+                    if (task.isSuccessful()) {
+                        Log.i("STITCH", String.format("success inserting: %s",
+                                task.getResult().getInsertedId()));
+                    } else {
+                        Log.e("app", "Failed to insert Document", task.getException());
+                    }
+                }
+            });
+        }
+        newNoteText.setText("");
     }
 
     public void openResult() {
