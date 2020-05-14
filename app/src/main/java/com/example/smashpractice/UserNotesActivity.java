@@ -47,7 +47,7 @@ public class UserNotesActivity extends AppCompatActivity {
     String email;
     String TAG = "NotesActivity";
 
-    boolean notesPull = false;
+    boolean pulledNotes = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class UserNotesActivity extends AppCompatActivity {
 
         user = (UserInfo) getApplication();
         email = user.getEmail();
+        noteList = getNotes(email);
 
         backButton = findViewById(R.id.backToProfile);
         notesButton = findViewById(R.id.notesButton);
@@ -64,16 +65,22 @@ public class UserNotesActivity extends AppCompatActivity {
         clearButton = findViewById(R.id.clearNotes);
         recyclerView = findViewById(R.id.myNotes);
 
+        if(pulledNotes == false) {
+            while(pulledNotes == false) {
+
+            }
+        } else {
+            recyclerView.setLayoutManager(manager);
+            adapter = new AdapterNotes(UserNotesActivity.this, noteList);
+            recyclerView.setAdapter(adapter);
+            pulledNotes = true;
+        }
 
         notesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 noteList = getNotes(email);
-                Log.d("Notes", noteList.toString());
-                manager = new LinearLayoutManager(UserNotesActivity.this);
-                adapter = new AdapterNotes(UserNotesActivity.this, noteList);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(manager);
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -104,17 +111,22 @@ public class UserNotesActivity extends AppCompatActivity {
                             @Override
                             public void apply(Object item) {
                                 Document doc = (Document) item;
+                                Note nextNote = new Note();
                                 String used = (String) doc.get("Char_used");
+                                nextNote.setUsed(used);
                                 String fought = (String) doc.get("Char_fought");
+                                nextNote.setFought(fought);
                                 String res = (String) doc.get("Result");
+                                nextNote.setResult(res);
                                 String text = (String) doc.get("Note");
+                                nextNote.setText(text);
                                 Log.d("Notes", used + fought + res + text);
-                                Note nextNote = new Note(used, fought, res, text);
                                 notesList.add(nextNote);
                             }
                         }
         );
-        Log.d("Notes", notesList.toString());
+        Log.d("Notes", "");
+        pulledNotes = true;
         return notesList;
     }
 }
