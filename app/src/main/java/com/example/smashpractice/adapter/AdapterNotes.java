@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smashpractice.R;
 import com.example.smashpractice.YTPlayerActivity;
+import com.example.smashpractice.models.Note;
 import com.example.smashpractice.models.VideoYT;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -27,18 +28,19 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.NoteHolder> {
 
     private Context context;
-    private List<String> noteList;
-    private int count = 0;
+    private List<Note> data;
 
-    public AdapterNotes(Context context, List<String> noteList) {
+    public AdapterNotes(Context context, List<Note> data) {
         this.context = context;
-        this.noteList = noteList;
+        this.data = data;
+        Log.d("Notes", "Constructor");
     }
 
 
     @NonNull
     @Override
     public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.d("Notes", "onCreateViewHolder");
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_note, parent, false);
         NoteHolder noteHolder = new NoteHolder(view);
@@ -47,35 +49,16 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.NoteHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
-        if(noteList.get(count) != null) {
-            String used = noteList.get(count);
-            holder.c_u.append(" " + used);
-            count++;
-            String fought = noteList.get(count);
-            holder.o_u.append(" " + fought);
-            count++;
-            String result = noteList.get(count);
-            if(result == "Win") {
-                holder.picture.setImageResource(R.drawable.win);
-                count++;
-            } else if(result == "Lose") {
-                holder.picture.setImageResource(R.drawable.lose);
-                count++;
-            }
-            String text = noteList.get(count);
-            holder.noteText.setText(text);
-            int newCount = count + 1;
-            if(noteList.get(newCount) != null) {
-                count++;
-            } else {
-                return;
-            }
-        }
+        Log.d("Notes", "onBindViewHolder");
+        Note userNote = data.get(position);
+        NoteHolder noteHolder = (NoteHolder) holder;
+        noteHolder.setData(userNote);
     }
 
     @Override
     public int getItemCount() {
-        return noteList.size();
+        Log.d("Notes", data.toString());
+        return data.size();
     }
 
 
@@ -92,6 +75,21 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.NoteHolder> 
             noteText = itemView.findViewById(R.id.noteTextList);
         }
 
+        public void setData(Note data) {
+            Log.d("Notes", "setData");
+            String getUsed = data.getUsed();
+            String getFought = data.getFought();
+            String getResult = data.getResult();
+            String getText = data.getText();
 
+            c_u.append(" " + getUsed);
+            o_u.append(" " + getFought);
+            if(getResult == "Win") {
+                picture.setImageResource(R.drawable.win);
+            } else if(getResult == "Lose") {
+                picture.setImageResource(R.drawable.lose);
+            }
+            noteText.setText(getText);
+        }
     }
 }

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.smashpractice.adapter.AdapterNotes;
+import com.example.smashpractice.models.Note;
 import com.mongodb.Block;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteFindIterable;
 import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoCollection;
@@ -32,11 +33,12 @@ public class UserNotesActivity extends AppCompatActivity {
 
     Button backButton;
     Button addButton;
+    Button notesButton;
     EditText newNoteText;
     RecyclerView recyclerView;
-    LinearLayoutManager manager;
+    LinearLayoutManager manager = new LinearLayoutManager(UserNotesActivity.this);
     AdapterNotes adapter;
-    List<String> noteList;
+    public List<Note> noteList = new ArrayList<>();
 
     Button clearButton;
 
@@ -45,7 +47,7 @@ public class UserNotesActivity extends AppCompatActivity {
     String email;
     String TAG = "NotesActivity";
 
-    boolean notesFound;
+    boolean notesPull = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,22 +56,26 @@ public class UserNotesActivity extends AppCompatActivity {
 
         user = (UserInfo) getApplication();
         email = user.getEmail();
-        noteList = new ArrayList<String>();
-        noteList = getNotes(email);
+
         backButton = findViewById(R.id.backToProfile);
+        notesButton = findViewById(R.id.notesButton);
         newNoteText = findViewById(R.id.addNoteText);
         addButton = findViewById(R.id.addNoteButton);
         clearButton = findViewById(R.id.clearNotes);
-
         recyclerView = findViewById(R.id.myNotes);
 
-        manager = new LinearLayoutManager(getBaseContext());
-        recyclerView.setLayoutManager(manager);
 
-
-        adapter = new AdapterNotes(getBaseContext(), noteList);
-        recyclerView.setAdapter(adapter);
-
+        notesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noteList = getNotes(email);
+                Log.d("Notes", noteList.toString());
+                manager = new LinearLayoutManager(UserNotesActivity.this);
+                adapter = new AdapterNotes(UserNotesActivity.this, noteList);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(manager);
+            }
+        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +86,9 @@ public class UserNotesActivity extends AppCompatActivity {
     }
 
 
-    public List<String> getNotes(String email) {
+    public List<Note> getNotes(String email) {
 
-        List<String> notesList = new ArrayList<String>();
+        List<Note> notesList = new ArrayList<>();
 
         final RemoteMongoCollection<Document> collection =
                 mongoClient.getDatabase("UserData").getCollection("Notes");
@@ -93,8 +99,6 @@ public class UserNotesActivity extends AppCompatActivity {
         // Get all entries with the criteria from filterDoc
         RemoteFindIterable results = collection.find(filterDoc);
 
-        // Log all journal entries that are found in the logger
-        Log.d("Notes", String.valueOf(results));
 
         results.forEach(new Block() {
                             @Override
@@ -104,14 +108,13 @@ public class UserNotesActivity extends AppCompatActivity {
                                 String fought = (String) doc.get("Char_fought");
                                 String res = (String) doc.get("Result");
                                 String text = (String) doc.get("Note");
-                                notesList.add(used);
-                                notesList.add(fought);
-                                notesList.add(res);
-                                notesList.add(text);
+                                Log.d("Notes", used + fought + res + text);
+                                Note nextNote = new Note(used, fought, res, text);
+                                notesList.add(nextNote);
                             }
                         }
         );
+        Log.d("Notes", notesList.toString());
         return notesList;
     }
-
 }
