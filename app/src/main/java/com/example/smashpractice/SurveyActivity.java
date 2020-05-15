@@ -56,7 +56,6 @@ public class SurveyActivity extends AppCompatActivity {
     TextView mainS;
     TextView tellUs;
 
-    Typeface montague;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +73,6 @@ public class SurveyActivity extends AppCompatActivity {
         mainS = findViewById(R.id.mainS);
         tellUs = findViewById(R.id.tellUs);
 
-        montague = Typeface.createFromAsset(getAssets(), "fonts/montague.ttf");
-        mainS.setTypeface(montague);
-        tellUs.setTypeface(montague);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SurveyActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.charNames));
