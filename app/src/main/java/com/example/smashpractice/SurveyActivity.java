@@ -3,6 +3,8 @@ package com.example.smashpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -28,6 +31,7 @@ import com.mongodb.stitch.core.services.mongodb.remote.RemoteUpdateResult;
 import org.bson.Document;
 
 import java.security.Key;
+import java.util.Locale;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -49,6 +53,11 @@ public class SurveyActivity extends AppCompatActivity {
     String email;
     String password;
 
+    TextView mainS;
+    TextView tellUs;
+
+    Typeface montague;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +68,15 @@ public class SurveyActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
         password = intent.getStringExtra("password");
 
+
         mainSpinner = findViewById(R.id.mainSpinner);
         enterButton = findViewById(R.id.enterButton);
+        mainS = findViewById(R.id.mainS);
+        tellUs = findViewById(R.id.tellUs);
+
+        montague = Typeface.createFromAsset(getAssets(), "fonts/montague.ttf");
+        mainS.setTypeface(montague);
+        tellUs.setTypeface(montague);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SurveyActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.charNames));

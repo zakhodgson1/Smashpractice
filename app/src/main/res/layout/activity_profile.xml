@@ -27,7 +27,7 @@
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="8dp"
         android:text="place holder"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -58,43 +58,46 @@
 
         <Button
             android:id="@+id/mainB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/button_cm"
             android:text="Change Main"
-            android:textColor="#040000" />
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+
+    <Button
+        android:id="@+id/notesB"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="56dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_login"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="View your Notes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <Button
-            android:id="@+id/notesB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="View your Notes"
-            android:textColor="#000000
-" />
-
-        <Button
-            android:id="@+id/logoutB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:padding="10dp"
-            android:text="Logout" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/logoutB"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_login"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Logout"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesB" />
 
     <TextView
         android:id="@+id/textView3"
@@ -110,16 +113,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
+
     <Button
         android:id="@+id/refreshB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_cm"
         android:text="Refresh"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/header" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation2"

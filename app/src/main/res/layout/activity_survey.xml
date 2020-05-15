@@ -8,25 +8,26 @@
     tools:context=".SurveyActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tellUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="Tell us who you main"
-        android:textColor="#000000"
+        android:textColor="#ff0000"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/mainS" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/mainS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Smash Practice Data Survey"
-        android:textColor="#000000"
+        android:text="Main Survey"
+        android:textColor="#ff0000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,17 +37,21 @@
 
     <Spinner
         android:id="@+id/mainSpinner"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tellUs" />
 
     <Button
         android:id="@+id/enterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="56dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_login"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:text="Enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

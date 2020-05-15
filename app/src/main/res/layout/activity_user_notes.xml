@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_hazel"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_hazel"
     tools:context=".UserNotesActivity">
 
     <TextView
@@ -24,18 +24,25 @@
 
     <Button
         android:id="@+id/addNoteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_redc"
+        android:text="Add"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/addNoteText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/addNoteText" />
 
     <Button
         android:id="@+id/backToProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_login"
+        android:layout_marginBottom="16dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/clearNotes"
@@ -43,24 +50,30 @@
 
     <Button
         android:id="@+id/clearNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
-        android:text="Clear Notes"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/button_login"
+        android:text="Clear notes"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/backToProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backToProfile"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/addNoteText"
-        android:layout_width="323dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Write a General Note..."
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/backToProfile"
         app:layout_constraintEnd_toStartOf="@+id/addNoteButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -78,21 +91,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myNotes"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/notesButton" />
 
     <Button
         android:id="@+id/notesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/button_redc"
         android:text="Get Notes"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
