@@ -28,6 +28,7 @@ public class ChangeMainActivity extends AppCompatActivity {
 
     Spinner mainSpinner;
     Button enterButton;
+    Button backButton;
     String email;
     String main;
 
@@ -42,6 +43,7 @@ public class ChangeMainActivity extends AppCompatActivity {
 
         mainSpinner = findViewById(R.id.mainSpinner);
         enterButton = findViewById(R.id.enterButton);
+        backButton = findViewById(R.id.backButton);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ChangeMainActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.charNames));
@@ -54,6 +56,14 @@ public class ChangeMainActivity extends AppCompatActivity {
                 enterData();
             }
         });
+
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                goBack();
+            }
+        });
+
     }
 
     public void enterData() {
