@@ -46,7 +46,7 @@
         android:id="@+id/enterButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_flatdark"
         android:text="Enter"
         android:textAllCaps="false"
@@ -54,15 +54,13 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainSpinner" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_flatdark"
         android:text="Back"
         android:textAllCaps="false"
@@ -72,5 +70,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/charPic"
+        android:layout_width="159dp"
+        android:layout_height="161dp"
+        app:layout_constraintBottom_toTopOf="@+id/enterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpinner"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
