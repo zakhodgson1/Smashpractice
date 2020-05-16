@@ -83,7 +83,8 @@
     <EditText
         android:id="@+id/noteBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:background="#FFFFFF"
         android:ems="10"
         android:hint="Write something you want to remember..."
         android:inputType="textPersonName"
