@@ -35,6 +35,7 @@ public class YTPlayerActivity extends AppCompatActivity {
     UserInfo user;
     String email;
     Button addNoteButton;
+    Button returnButton;
     EditText newNoteText;
 
     @Override
@@ -47,6 +48,7 @@ public class YTPlayerActivity extends AppCompatActivity {
 
         addNoteButton = findViewById(R.id.addNoteButton);
         newNoteText = findViewById(R.id.addNoteText);
+        returnButton = findViewById(R.id.returnB);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -86,6 +88,14 @@ public class YTPlayerActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext()
+                        , WatchActivity.class));
             }
         });
 

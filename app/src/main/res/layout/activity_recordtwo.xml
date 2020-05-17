@@ -100,7 +100,7 @@
         android:id="@+id/logButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_login"
         android:text="Log Game"
         android:textAllCaps="false"

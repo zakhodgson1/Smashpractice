@@ -32,22 +32,28 @@
 
     <Button
         android:id="@+id/useMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:text="use main"
-        app:layout_constraintEnd_toStartOf="@+id/useSelected"
-        app:layout_constraintHorizontal_bias="0.452"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_login"
+        android:text="Use Main"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
+        app:layout_constraintEnd_toEndOf="@+id/mainPic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/useSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/mainPic" />
 
     <Button
         android:id="@+id/useSelected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Use selected character"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_login"
+        android:text="Use Selected"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
         app:layout_constraintBottom_toBottomOf="@+id/useMain"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/selectedPic"
         app:layout_constraintTop_toTopOf="@+id/useMain" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -63,5 +69,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
+
+    <ImageView
+        android:id="@+id/mainPic"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/useSpinner"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/selectedPic"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainPic"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@
         android:layout_marginTop="25dp"
         android:text="Reset Password?"
         android:textColor="#000001"
+        android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +27,7 @@
         android:layout_marginTop="29dp"
         android:text="Don't have an accout? Sign up!"
         android:textColor="#000001"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />

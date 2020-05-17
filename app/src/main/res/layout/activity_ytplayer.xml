@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_magic"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_magic"
     tools:context=".YTPlayerActivity">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -18,8 +18,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="352dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,28 +61,39 @@
 
     <EditText
         android:id="@+id/addNoteText"
-        android:layout_width="0dp"
+        android:layout_width="362dp"
         android:layout_height="35dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="Write a note on the video..."
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toStartOf="@+id/addNoteButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/returnB" />
 
     <Button
         android:id="@+id/addNoteButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/button_yellowc"
-        android:text="ADD"
+        android:text="Add"
         android:textAllCaps="false"
         android:textColor="#0000ff"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/addNoteText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/addNoteText" />
+
+    <Button
+        android:id="@+id/returnB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_yellow"
+        android:text="Return"
+        android:textAllCaps="false"
+        android:textColor="#0000ff"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     Button loseButton;
     Button logButton;
     Button switchButton;
+    Button clearButton;
     EditText note;
     String charInUse;
     String charFought;
@@ -57,6 +58,7 @@ public class RecordTwoActivity extends AppCompatActivity {
         loseButton = findViewById(R.id.loseButton);
         logButton = findViewById(R.id.logButton);
         switchButton = findViewById(R.id.switchButton);
+        clearButton = findViewById(R.id.clearDataB);
         note = findViewById(R.id.noteBox);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RecordTwoActivity.this,
@@ -70,6 +72,13 @@ public class RecordTwoActivity extends AppCompatActivity {
                 winButton.setEnabled(false);
                 loseButton.setEnabled(false);
                 result = "Lose";
+            }
+        });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearData();
             }
         });
 
