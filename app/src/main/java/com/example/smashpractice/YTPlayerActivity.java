@@ -50,47 +50,6 @@ public class YTPlayerActivity extends AppCompatActivity {
         newNoteText = findViewById(R.id.addNoteText);
         returnButton = findViewById(R.id.returnB);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        //Set home selected
-        bottomNavigationView.setSelectedItemId(R.id.watch_nav);
-
-        //Perform ItemSelectedList
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@androidx.annotation.NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.compare_nav:
-                        startActivity(new Intent(getApplicationContext()
-                                ,CompareActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.record_nav:
-                        //finish();
-                        startActivity(new Intent(getApplicationContext()
-                                , RecordOneActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.play_nav:
-                        // finish();
-                        startActivity(new Intent(getApplicationContext()
-                                , PlayActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.watch_nav:
-                        //finish();
-//                        startActivity(new Intent(getApplicationContext()
-//                                , WatchActivity.class));
-                        //                       overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });
-
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
