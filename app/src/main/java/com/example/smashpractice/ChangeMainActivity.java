@@ -3,6 +3,7 @@ package com.example.smashpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,8 @@ public class ChangeMainActivity extends AppCompatActivity {
     String email;
     String main;
     ImageView charPic;
+
+    MediaPlayer ring;
 
 
     @Override
@@ -278,6 +281,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Mario":
                 charPic.setImageResource(R.drawable.mario);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.mario);
+                ring.start();
                 break;
 
             case "Marth":

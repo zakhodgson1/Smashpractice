@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -58,6 +59,8 @@ public class SurveyActivity extends AppCompatActivity {
     TextView tellUs;
 
     ImageView charPic;
+
+    MediaPlayer ring;
 
 
     @Override
@@ -314,6 +317,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Mario":
                 charPic.setImageResource(R.drawable.mario);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.mario);
+                ring.start();
                 break;
 
             case "Marth":

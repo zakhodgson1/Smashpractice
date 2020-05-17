@@ -3,6 +3,7 @@ package com.example.smashpractice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -29,6 +30,8 @@ public class RecordOneActivity extends AppCompatActivity {
 
     ImageView mainPic;
     ImageView selectedPic;
+
+    MediaPlayer ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,7 @@ public class RecordOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 charInUse = user.getMain();
+                playSound(charInUse);
                 openNext(charInUse);
             }
         });
@@ -82,6 +86,7 @@ public class RecordOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 charInUse = useSpinner.getSelectedItem().toString();
+                playSound(charInUse);
                 openNext(charInUse);
             }
         });
@@ -453,6 +458,254 @@ public class RecordOneActivity extends AppCompatActivity {
                 break;
         }
         charPic.setVisibility(View.VISIBLE);
+    }
+
+
+    public void playSound(String character) {
+
+        switch (character) {
+            case "Banjo":
+                break;
+
+            case "Bayonetta":
+                break;
+
+            case "Bowser":
+                break;
+
+            case "Bowser jr":
+                break;
+
+            case "Byleth":
+                break;
+
+            case "Captain Falcon":
+                break;
+
+            case "Chrom":
+                break;
+
+            case "Cloud":
+                break;
+
+            case "Corrin":
+                break;
+
+            case "Daisy":
+                break;
+
+            case "Dark Pit":
+                break;
+
+            case "Dark Samus":
+                break;
+
+            case "Diddy Kong":
+                break;
+
+            case "Doctor Mario":
+                break;
+
+            case "Donkey Kong":
+                break;
+
+            case "Duck Hunt":
+                break;
+
+            case "Falco":
+                break;
+
+            case "Fox":
+                break;
+
+            case "Game and Watch":
+                break;
+
+            case "Ganondorf":
+                break;
+
+            case "Greninja":
+                break;
+
+            case "Hero":
+                break;
+
+            case "Ice Climbers":
+                break;
+
+            case "Ike":
+                break;
+
+            case "Incineroar":
+                break;
+
+            case "Inkling":
+                break;
+
+            case "Isabelle":
+                break;
+
+            case "Jigglypuff":
+                break;
+
+            case "Joker":
+                break;
+
+            case "Ken":
+                break;
+
+            case "King Dedede":
+                break;
+
+            case "King K Rool":
+                break;
+
+            case "Kirby":
+                break;
+
+            case "Link":
+                break;
+
+            case "Little Mac":
+                break;
+
+            case "Lucario":
+                break;
+
+            case "Lucas":
+                break;
+
+            case "Lucina":
+                break;
+
+            case "Luigi":
+                break;
+
+            case "Mario":
+                ring = MediaPlayer.create(RecordOneActivity.this, R.raw.mario);
+                ring.start();
+                break;
+
+            case "Marth":
+                break;
+
+            case "Mega Man":
+                break;
+
+            case "Meta Knight":
+                break;
+
+            case "Mewtwo":
+                break;
+
+            case "Mii Brawler":
+                break;
+
+            case "Mii Gunner":
+                break;
+
+            case "Mii Swordfighter":
+                break;
+
+            case "Ness":
+                break;
+
+            case "Olimar":
+                break;
+
+            case "Pac Man":
+                break;
+
+            case "Palutena":
+                break;
+
+            case "Peach":
+                break;
+
+            case "Pichu":
+                break;
+
+            case "Pikachu":
+                break;
+
+            case "Piranha Plant":
+                break;
+
+            case "Pit":
+                break;
+
+            case "Pokemon Trainer":
+                break;
+
+            case "Richter":
+                break;
+
+            case "Ridley":
+                break;
+
+            case "ROB":
+                break;
+
+            case "Robin":
+                break;
+
+            case "Rosalina":
+                break;
+
+            case "Roy":
+                break;
+
+            case "Ryu":
+                break;
+
+            case "Samus":
+                break;
+
+            case "Sheik":
+                break;
+
+            case "Shulk":
+                break;
+
+            case "Simon":
+                break;
+
+            case "Snake":
+                break;
+
+            case "Sonic":
+                break;
+
+            case "Terry":
+                break;
+
+            case "Toon Link":
+                break;
+
+            case "Villager":
+                break;
+
+            case "Wario":
+                break;
+
+            case "Wii Fit Trainer":
+                break;
+
+            case "Wolf":
+                break;
+
+            case "Yoshi":
+                break;
+
+            case "Young Link":
+                break;
+
+            case "Zelda":
+                break;
+
+            case "Zero Suit Samus":
+                break;
+        }
     }
 
 }
