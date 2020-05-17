@@ -74,9 +74,13 @@
 
     <Button
         android:id="@+id/addNoteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Note"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_yellowc"
+        android:text="ADD"
+        android:textAllCaps="false"
+        android:textColor="#0000ff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/addNoteText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/addNoteText" />

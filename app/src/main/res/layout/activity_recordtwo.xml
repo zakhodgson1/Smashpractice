@@ -11,15 +11,15 @@
         android:id="@+id/textView9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:text="Who did you Fight?"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/clearDataB" />
 
     <Spinner
         android:id="@+id/selectedSpinner"
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="What was the Result?"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -46,22 +47,24 @@
 
     <Button
         android:id="@+id/winButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="44dp"
-        android:background="@color/colorAccent"
-        android:text="Win"
+        android:background="@drawable/button_greenc"
+        android:text="Win!"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/loseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="60dp"
-        android:background="@color/colorAccent"
-        android:text="Lose"
+        android:background="@drawable/button_redc"
+        android:text="Lose!"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/winButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/winButton"
@@ -73,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Add a Note"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -94,26 +98,31 @@
 
     <Button
         android:id="@+id/logButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_login"
         android:text="Log Game"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteBox" />
 
     <Button
         android:id="@+id/switchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_login"
         android:text="Switch Character"
-        app:layout_constraintBottom_toBottomOf="@+id/logButton"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.678"
-        app:layout_constraintStart_toEndOf="@+id/logButton"
-        app:layout_constraintTop_toTopOf="@+id/logButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logButton" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -128,4 +137,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
+
+    <Button
+        android:id="@+id/clearDataB"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_bluec"
+        android:text="Clear"
+        android:textAllCaps="false"
+        android:textColor="#ffff00"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

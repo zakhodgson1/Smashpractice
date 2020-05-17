@@ -67,8 +67,8 @@ public class RecordTwoActivity extends AppCompatActivity {
         loseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                winButton.setBackgroundColor(Color.GRAY);
-                loseButton.setBackgroundColor(Color.RED);
+                winButton.setEnabled(false);
+                loseButton.setEnabled(false);
                 result = "Lose";
             }
         });
@@ -76,8 +76,8 @@ public class RecordTwoActivity extends AppCompatActivity {
         winButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loseButton.setBackgroundColor(Color.GRAY);
-                winButton.setBackgroundColor(Color.RED);
+                loseButton.setEnabled(false);
+                winButton.setEnabled(false);
                 result = "Win";
             }
         });
@@ -179,8 +179,8 @@ public class RecordTwoActivity extends AppCompatActivity {
 
 
     public void clearData() {
-        winButton.setBackgroundColor(Color.GRAY);
-        loseButton.setBackgroundColor(Color.GRAY);
+        winButton.setEnabled(true);
+        loseButton.setEnabled(true);
         result = "NA";
         note.setText("");
     }
