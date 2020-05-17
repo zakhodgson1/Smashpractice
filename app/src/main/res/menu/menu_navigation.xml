@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/play_nav"
-        android:icon="@drawable/ic_habits"
+        android:icon="@drawable/playIcon"
         android:title="Play" />
 
     <item
         android:id="@+id/record_nav"
-        android:icon="@drawable/ic_habits"
+        android:icon="@drawable/recordIcon"
         android:title="Record" />
 
     <item
         android:id="@+id/compare_nav"
-        android:icon="@drawable/ic_habits"
+        android:icon="@drawable/compareIcon"
         android:title="Compare" />
 
     <item
         android:id="@+id/watch_nav"
-        android:icon="@drawable/ic_habits"
+        android:icon="@drawable/watchIcon"
         android:title="Watch" />
 
 </menu>

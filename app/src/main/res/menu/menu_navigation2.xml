@@ -4,11 +4,11 @@
     <item
         android:id="@+id/play_nav"
         android:title="Play"
-        android:icon="@drawable/ic_habits"/>
+        android:icon="@drawable/playIcon"/>
 
     <item
         android:id="@+id/profile_nav"
         android:title="Profile"
-        android:icon="@drawable/ic_habits"/>
+        android:icon="@drawable/profileIcon"/>
 
 </menu>
