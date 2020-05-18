@@ -169,6 +169,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Bowser":
                 charPic.setImageResource(R.drawable.bowser);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.bowser);
+                ring.start();
                 break;
 
             case "Bowser jr":
@@ -217,6 +219,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Donkey Kong":
                 charPic.setImageResource(R.drawable.dk);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.donkey);
+                ring.start();
                 break;
 
             case "Duck Hunt":
@@ -237,6 +241,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Ganondorf":
                 charPic.setImageResource(R.drawable.ganon);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.ganondorf);
+                ring.start();
                 break;
 
             case "Greninja":
@@ -313,6 +319,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Luigi":
                 charPic.setImageResource(R.drawable.luigi);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.luigi);
+                ring.start();
                 break;
 
             case "Mario":
@@ -363,10 +371,14 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Palutena":
                 charPic.setImageResource(R.drawable.palutena);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.palu);
+                ring.start();
                 break;
 
             case "Peach":
                 charPic.setImageResource(R.drawable.peach);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.peach);
+                ring.start();
                 break;
 
             case "Pichu":
@@ -375,6 +387,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Pikachu":
                 charPic.setImageResource(R.drawable.pikachu);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.pikachu);
+                ring.start();
                 break;
 
             case "Piranha Plant":

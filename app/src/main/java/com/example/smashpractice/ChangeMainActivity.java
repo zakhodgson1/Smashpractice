@@ -133,6 +133,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Bowser":
                 charPic.setImageResource(R.drawable.bowser);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.bowser);
+                ring.start();
                 break;
 
             case "Bowser jr":
@@ -181,6 +183,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Donkey Kong":
                 charPic.setImageResource(R.drawable.dk);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.donkey);
+                ring.start();
                 break;
 
             case "Duck Hunt":
@@ -201,6 +205,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Ganondorf":
                 charPic.setImageResource(R.drawable.ganon);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.ganondorf);
+                ring.start();
                 break;
 
             case "Greninja":
@@ -277,6 +283,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Luigi":
                 charPic.setImageResource(R.drawable.luigi);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.luigi);
+                ring.start();
                 break;
 
             case "Mario":
@@ -327,10 +335,14 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Palutena":
                 charPic.setImageResource(R.drawable.palutena);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.palu);
+                ring.start();
                 break;
 
             case "Peach":
                 charPic.setImageResource(R.drawable.peach);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.peach);
+                ring.start();
                 break;
 
             case "Pichu":
@@ -339,6 +351,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Pikachu":
                 charPic.setImageResource(R.drawable.pikachu);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.pikachu);
+                ring.start();
                 break;
 
             case "Piranha Plant":

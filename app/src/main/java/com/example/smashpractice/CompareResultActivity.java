@@ -425,6 +425,8 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Bowser":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.bowser);
+                ring.start();
                 break;
 
             case "Bowser jr":
@@ -461,6 +463,8 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Donkey Kong":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.donkey);
+                ring.start();
                 break;
 
             case "Duck Hunt":
@@ -476,6 +480,8 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Ganondorf":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.ganondorf);
+                ring.start();
                 break;
 
             case "Greninja":
@@ -533,6 +539,8 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Luigi":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.luigi);
+                ring.start();
                 break;
 
             case "Mario":
@@ -571,15 +579,21 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Palutena":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.palu);
+                ring.start();
                 break;
 
             case "Peach":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.peach);
+                ring.start();
                 break;
 
             case "Pichu":
                 break;
 
             case "Pikachu":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.pikachu);
+                ring.start();
                 break;
 
             case "Piranha Plant":
