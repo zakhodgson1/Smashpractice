@@ -82,19 +82,20 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.NoteHolder> 
             String getResult = data.getResult();
             String getText = data.getText();
 
-            if(getUsed != "NA") {
+            if(getUsed == "NA") {
+                c_u.setText("General Note:");
+                o_u.setText("");
+                noteText.setText(getText);
+            } else {
                 c_u.setText("Character used: " + getUsed);
                 o_u.setText("Opponent used: " + getFought);
-            } else {
-                c_u.setText("General Note");
-                o_u.setText("");
+                if (getResult == "Win") {
+                    picture.setImageResource(R.drawable.win);
+                } else if (getResult == "Lose") {
+                    picture.setImageResource(R.drawable.lose);
+                }
+                noteText.setText(getText);
             }
-            if(getResult == "Win") {
-                picture.setImageResource(R.drawable.win);
-            } else if(getResult == "Lose") {
-                picture.setImageResource(R.drawable.lose);
-            }
-            noteText.setText(getText);
         }
     }
 }

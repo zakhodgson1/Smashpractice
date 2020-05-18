@@ -37,7 +37,7 @@
         android:layout_height="124dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/smash_practice" />
 
     <TextView
         android:id="@+id/noteTextList"

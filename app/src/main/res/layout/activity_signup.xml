@@ -9,17 +9,14 @@
 
     <EditText
         android:id="@+id/Gtag"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="43dp"
-        android:layout_marginTop="332dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="Gamertag/Username"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/emailInput"
@@ -53,11 +50,11 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
-        android:textAllCaps="false"
         android:background="@drawable/button_login"
+        android:text="Sign up"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:text="Sign up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,4 +74,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupB" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/smash_practice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

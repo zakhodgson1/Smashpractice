@@ -40,9 +40,9 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/button_login"
         android:text="Log In"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
         android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,17 +65,24 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="50dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="32dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="Your Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/smash_practice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
