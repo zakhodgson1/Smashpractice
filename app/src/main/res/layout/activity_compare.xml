@@ -9,14 +9,15 @@
 
     <Spinner
         android:id="@+id/compareSpin"
-        android:layout_width="209dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/charTwo" />
+        app:layout_constraintTop_toBottomOf="@+id/charTwo"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/charTwo"
@@ -32,9 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Compare"
+        android:fontFamily="@font/archivo_black"
+        android:text="Choose your characters"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -46,9 +48,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:fontFamily="@font/archivo_black"
         android:text="Character 1"
         android:textColor="#000000"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="80dp"
+        android:fontFamily="@font/archivo_black"
         android:text="Character 2"
         android:textColor="#000000"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -79,11 +83,12 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/archivo_black"
         android:text="Compare:"
         android:textColor="#000000"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/charOne" />
 
@@ -91,14 +96,13 @@
         android:id="@+id/compareB"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="96dp"
-        android:textColor="#ffff00"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_flatdark"
         android:text="Compare"
+        android:textColor="#ffff00"
+        app:layout_constraintBottom_toTopOf="@+id/newNoteText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareSpin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -116,16 +120,16 @@
 
     <EditText
         android:id="@+id/newNoteText"
-        android:layout_width="0dp"
+        android:layout_width="362dp"
         android:layout_height="35dp"
+        android:layout_marginBottom="24dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="Write a Note...."
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toStartOf="@+id/addNoteButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareB" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addNoteButton"

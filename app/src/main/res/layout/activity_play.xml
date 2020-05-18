@@ -14,8 +14,8 @@
         android:background="@drawable/button_flare"
         android:text="Click to Begin!"
         android:textAllCaps="false"
+        android:textColor="#ffffff"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/recordPic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -29,7 +29,7 @@
         android:text="Click to Begin!"
         android:textAllCaps="false"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/compPic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/compPic" />
@@ -42,7 +42,7 @@
         android:textAllCaps="false"
         android:background="@drawable/button_flare"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/watchPic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/watchPic" />
