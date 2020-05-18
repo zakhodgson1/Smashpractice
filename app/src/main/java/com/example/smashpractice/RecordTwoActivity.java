@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -41,6 +42,7 @@ public class RecordTwoActivity extends AppCompatActivity {
     String TAG;
     String noteText;
     String result;
+    MediaPlayer ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,8 @@ public class RecordTwoActivity extends AppCompatActivity {
                 winButton.setEnabled(false);
                 loseButton.setEnabled(false);
                 result = "Lose";
+                ring = MediaPlayer.create(RecordTwoActivity.this, R.raw.lose_sound);
+                ring.start();
             }
         });
 
@@ -88,6 +92,8 @@ public class RecordTwoActivity extends AppCompatActivity {
                 loseButton.setEnabled(false);
                 winButton.setEnabled(false);
                 result = "Win";
+                ring = MediaPlayer.create(RecordTwoActivity.this, R.raw.win_sound);
+                ring.start();
             }
         });
 

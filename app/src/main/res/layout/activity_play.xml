@@ -68,7 +68,7 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/compPic"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/record_pic" />
 
     <ImageView
         android:id="@+id/compPic"
@@ -77,7 +77,7 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/watchPic"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/compare_pic" />
 
     <ImageView
         android:id="@+id/watchPic"
@@ -86,7 +86,7 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation2"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/watch_pic" />
 
     <TextView
         android:id="@+id/textView"
@@ -132,7 +132,7 @@
         android:id="@+id/textView15"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Compare character stats in a 1 on 1! "
+        android:text="Compare character stats in a 1 on 1 battle! "
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -158,7 +158,7 @@
         android:id="@+id/textView17"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Surf youtube to take notes on matchups!"
+        android:text="Surf youtube, and take notes on videos!"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
