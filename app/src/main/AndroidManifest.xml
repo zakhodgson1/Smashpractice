@@ -12,7 +12,7 @@
         android:icon="@drawable/smash_practice"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@drawable/smash_practice"
+        android:roundIcon="@drawable/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserNotesActivity"></activity>

@@ -117,7 +117,7 @@
         android:id="@+id/refreshB"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/button_cm"
         android:text="Refresh"
         android:textAllCaps="false"
