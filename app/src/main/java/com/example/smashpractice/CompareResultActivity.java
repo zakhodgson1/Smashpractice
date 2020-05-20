@@ -589,6 +589,8 @@ public class CompareResultActivity extends AppCompatActivity {
                 break;
 
             case "Pichu":
+                ring = MediaPlayer.create(CompareResultActivity.this, R.raw.pichu);
+                ring.start();
                 break;
 
             case "Pikachu":

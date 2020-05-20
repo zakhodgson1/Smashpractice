@@ -635,6 +635,8 @@ public class RecordOneActivity extends AppCompatActivity {
                 break;
 
             case "Pichu":
+                ring = MediaPlayer.create(RecordOneActivity.this, R.raw.pichu);
+                ring.start();
                 break;
 
             case "Pikachu":

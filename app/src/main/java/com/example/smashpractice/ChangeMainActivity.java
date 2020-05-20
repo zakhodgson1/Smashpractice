@@ -347,6 +347,8 @@ public class ChangeMainActivity extends AppCompatActivity {
 
             case "Pichu":
                 charPic.setImageResource(R.drawable.pichu);
+                ring = MediaPlayer.create(ChangeMainActivity.this, R.raw.pichu);
+                ring.start();
                 break;
 
             case "Pikachu":

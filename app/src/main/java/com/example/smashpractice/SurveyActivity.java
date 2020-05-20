@@ -383,6 +383,8 @@ public class SurveyActivity extends AppCompatActivity {
 
             case "Pichu":
                 charPic.setImageResource(R.drawable.pichu);
+                ring = MediaPlayer.create(SurveyActivity.this, R.raw.pichu);
+                ring.start();
                 break;
 
             case "Pikachu":
