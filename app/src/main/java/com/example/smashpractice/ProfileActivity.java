@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     TextView header;
     TextView emailText;
+    TextView address;
     ImageView profilePicture;
     Button mainB;
     Button logoutB;
@@ -54,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         logoutB = findViewById(R.id.logoutB);
         notesB = findViewById(R.id.notesB);
         refreshB = findViewById(R.id.refreshB);
+        address = findViewById(R.id.eAddress);
 
         user = (UserInfo) getApplication();
         email = user.getEmail();
@@ -129,7 +131,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void refresh() {
         tag = user.getUserName();
+        email = user.getEmail();
         header.setText(tag + "'s Profile");
+        emailText.setText(email);
+        address.setText("Email Address:");
     }
 
     public void sendTag(String gtag) {
